@@ -4,8 +4,8 @@ import Questions from "./components/questions";
 function App() {
   return (
     <>
-      <div className="flex items-center flex-col">
-        <h1>Quiz App</h1>
+      <div className="flex flex-col items-center ">
+        <h1 className="text-8xl text-white mb-10">Quiz App</h1>
         <Questions />
       </div>
     </>
