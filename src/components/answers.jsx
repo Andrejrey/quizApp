@@ -6,7 +6,7 @@ const Answers = ({ answers }) => {
       {answers.map((answer) => (
         <button
           key={answer.id}
-          className="m-2 rounded-md bg-orange-400 p-4 font-sans font-bold text-white shadow-inner hover:bg-amber-500 hover:text-gray-900"
+          className="m-2 cursor-pointer rounded-md bg-orange-400 p-4 font-sans font-bold text-white shadow-inner hover:bg-amber-500 hover:text-gray-900"
         >
           {answer}
         </button>
