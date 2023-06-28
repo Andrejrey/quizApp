@@ -17,7 +17,7 @@ function App() {
     <>
       <div className="flex flex-col items-center mb-10">
         <h1 className="text-8xl text-white mb-10">Quiz App</h1>
-        <Questions questions={post} />
+        <Questions key={post.id} questions={post} />
       </div>
     </>
   );
