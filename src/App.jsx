@@ -13,21 +13,7 @@ function App() {
     axios
       .get("https://wd40-trivia.onrender.com/api/questions")
       .then((response) => {
-        const decodedData = response.data.map((question) => ({
-          ...question,
-          question: question.question
-            .replace(/(&amp;)/g, "&")
-            .replace(/(&#039;)/g, "'")
-            .replace(/(&quot;)/g, '"'),
-          answers: question.answers.map((answer) =>
-            answer
-              .replace(/(&amp;)/g, "&")
-              .replace(/(&#039;)/g, "'")
-              .replace(/(&quot;)/g, '"')
-          ),
-        }));
-
-        setQuestions(decodedData);
+        setQuestions(response.data);
       });
   }, []);
 
