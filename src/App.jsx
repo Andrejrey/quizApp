@@ -3,7 +3,7 @@ import Questions from "./components/Questions";
 import { useEffect, useState } from "react";
 
 function App() {
-  const [post, setPost] = useState([]);
+  const [questions, setQuestions] = useState([]);
   const [result, setResult] = useState({
     correctAnswerResult: 0,
     wrongAnswersResult: 0,
@@ -13,17 +13,15 @@ function App() {
     axios
       .get("https://wd40-trivia.onrender.com/api/questions")
       .then((response) => {
-        setPost(response.data);
+        setQuestions(response.data);
       });
   }, []);
 
   return (
-    <>
-      <div className="flex flex-col items-center mb-10">
-        <h1 className="text-8xl text-white mb-10">Quiz App</h1>
-        <Questions questions={post} setResult={setResult} result={result} />
-      </div>
-    </>
+    <div className="mb-10 flex flex-col items-center">
+      <h1 className="mb-10 text-8xl text-white">Quiz App</h1>
+      <Questions questions={questions} setResult={setResult} result={result} />
+    </div>
   );
 }
 

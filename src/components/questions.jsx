@@ -6,46 +6,34 @@ const Questions = ({ questions, setResult, result }) => {
   const [showResult, setShowResult] = useState(false);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
-  function showCurrentQuestion() {
-    if (currentQuestionIndex > 4) {
+  const showCurrentQuestion = () => {
+    if (currentQuestionIndex >= questions.length - 1) {
       setShowResult(true);
     } else {
-      setCurrentQuestionIndex(currentQuestionIndex + 1);
+      setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
     }
-  }
+  };
 
   return (
     <div>
       {!showResult ? (
-        <>
-          {questions.map((question, index) => {
-            return (
-              <div key={question.id}>
-                {index === currentQuestionIndex ? (
-                  <>
-                    <div>
-                      <p className="m-5 flex justify-center font-sans text-xl text-white">
-                        {question.question}
-                      </p>
-                      <Answers
-                        answers={question.answers}
-                        correctAnswers={question.correctAnswer}
-                        uresAnswer={question.userAnswer}
-                        answersId={question.id}
-                        questionsIndex={index}
-                        showCurrentQuestion={showCurrentQuestion}
-                        key={question.answers}
-                        setResult={setResult}
-                      />
-                    </div>
-                  </>
-                ) : (
-                  ""
-                )}
+        questions.map((question, index) => (
+          <div key={question.id}>
+            {index === currentQuestionIndex && (
+              <div>
+                <p className="m-5 flex justify-center font-sans text-xl text-white">
+                  {question.question}
+                </p>
+                <Answers
+                  answers={question.answers}
+                  correctAnswer={question.correctAnswer}
+                  showCurrentQuestion={showCurrentQuestion}
+                  setResult={setResult}
+                />
               </div>
-            );
-          })}
-        </>
+            )}
+          </div>
+        ))
       ) : (
         <QuizResults result={result} />
       )}

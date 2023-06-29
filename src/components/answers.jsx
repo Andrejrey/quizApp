@@ -1,31 +1,34 @@
+import { useState } from "react";
+
 const Answers = ({
   answers,
-  correctAnswers,
+  correctAnswer,
   showCurrentQuestion,
   setResult,
 }) => {
   const onAnswerSelected = (answer) => {
-    if (answer === correctAnswers) {
-      setResult((prev) => {
-        return { ...prev, correctAnswerResult: prev.correctAnswerResult + 1 };
-      });
-      showCurrentQuestion();
+    if (answer === correctAnswer) {
+      setResult((prev) => ({
+        ...prev,
+        correctAnswerResult: prev.correctAnswerResult + 1,
+      }));
     } else {
-      showCurrentQuestion();
-      setResult((prev) => {
-        return { ...prev, wrongAnswersResult: prev.wrongAnswersResult + 1 };
-      });
+      setResult((prev) => ({
+        ...prev,
+        wrongAnswersResult: prev.wrongAnswersResult + 1,
+      }));
     }
+    showCurrentQuestion();
   };
 
   return (
-    <div className="flex flex-col justify-center items-center">
+    <div className="flex flex-col items-center justify-center">
       {answers.map((answer, index) => (
         <button
           onClick={() => onAnswerSelected(answer)}
           value={answer}
           key={index}
-          className="m-2 rounded-md w-72 bg-orange-400 p-4 font-sans font-bold text-white shadow-inner hover:bg-amber-500 hover:text-gray-900"
+          className="m-2 w-72 rounded-md bg-orange-400 p-4 font-sans font-bold text-white shadow-inner hover:bg-amber-500 hover:text-gray-900"
         >
           {answer}
         </button>
