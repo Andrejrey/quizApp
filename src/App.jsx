@@ -1,5 +1,5 @@
 import axios from "axios";
-import Questions from "./components/questions";
+import Questions from "./components/Questions";
 import { useEffect, useState } from "react";
 
 function App() {

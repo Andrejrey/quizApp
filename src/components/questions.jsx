@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Answers from "./answers";
-import QuizResults from "./quizResults";
+import QuizResults from "./QuizResults";
 
 const Questions = ({ questions, setResult, result }) => {
   const [showResult, setShowResult] = useState(false);
