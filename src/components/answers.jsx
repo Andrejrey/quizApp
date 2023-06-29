@@ -1,44 +1,31 @@
-import { useState } from "react";
-
-const Answers = ({ answers, correctAnswers, showCurrentQuestion }) => {
-  const [selectedAnswer, setSelectedAnswer] = useState("");
-
-  const [result, setResult] = useState({
-    correctAnswer: 0,
-    wrongAnswers: 0,
-  });
-
+const Answers = ({
+  answers,
+  correctAnswers,
+  showCurrentQuestion,
+  setResult,
+}) => {
   const onAnswerSelected = (answer) => {
     if (answer === correctAnswers) {
-      setSelectedAnswer(true);
+      setResult((prev) => {
+        return { ...prev, correctAnswerResult: prev.correctAnswerResult + 1 };
+      });
       showCurrentQuestion();
-      //countMyScore();
     } else {
-      setSelectedAnswer(false);
       showCurrentQuestion();
+      setResult((prev) => {
+        return { ...prev, wrongAnswersResult: prev.wrongAnswersResult + 1 };
+      });
     }
   };
 
-  /*
-  const countMyScore = () => {
-    setResult((prev) =>
-      selectedAnswer
-        ? {
-            ...prev,
-            correctAnswers: prev.correctAnswers + 1,
-          }
-        : { ...prev, wrongAnswers: prev.wrongAnswers + 1 }
-    );
-  };
-*/
   return (
-    <div className="flex justify-center">
+    <div className="flex flex-col justify-center items-center">
       {answers.map((answer, index) => (
         <button
-          onClick={(e) => onAnswerSelected(e, answer)}
+          onClick={() => onAnswerSelected(answer)}
           value={answer}
           key={index}
-          className="m-2 rounded-md bg-orange-400 p-4 font-sans font-bold text-white shadow-inner hover:bg-amber-500 hover:text-gray-900"
+          className="m-2 rounded-md w-72 bg-orange-400 p-4 font-sans font-bold text-white shadow-inner hover:bg-amber-500 hover:text-gray-900"
         >
           {answer}
         </button>

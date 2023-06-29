@@ -2,14 +2,16 @@ import { useState } from "react";
 import Answers from "./answers";
 import QuizResults from "./quizResults";
 
-const Questions = ({ questions }) => {
+const Questions = ({ questions, setResult, result }) => {
   const [showResult, setShowResult] = useState(false);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
-  console.log("currentQuestionIndex:", currentQuestionIndex);
-
   function showCurrentQuestion() {
-    setCurrentQuestionIndex(currentQuestionIndex + 1);
+    if (currentQuestionIndex > 4) {
+      setShowResult(true);
+    } else {
+      setCurrentQuestionIndex(currentQuestionIndex + 1);
+    }
   }
 
   return (
@@ -18,10 +20,10 @@ const Questions = ({ questions }) => {
         <>
           {questions.map((question, index) => {
             return (
-              <>
+              <div key={question.id}>
                 {index === currentQuestionIndex ? (
                   <>
-                    <div key={question.id}>
+                    <div>
                       <p className="m-5 flex justify-center font-sans text-xl text-white">
                         {question.question}
                       </p>
@@ -32,18 +34,20 @@ const Questions = ({ questions }) => {
                         answersId={question.id}
                         questionsIndex={index}
                         showCurrentQuestion={showCurrentQuestion}
+                        key={question.answers}
+                        setResult={setResult}
                       />
                     </div>
                   </>
                 ) : (
                   ""
                 )}
-              </>
+              </div>
             );
           })}
         </>
       ) : (
-        <QuizResults />
+        <QuizResults result={result} />
       )}
     </div>
   );

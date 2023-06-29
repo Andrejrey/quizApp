@@ -1,8 +1,14 @@
-const QuizResults = () => {
+const QuizResults = ({ result }) => {
   return (
-    <div>
+    <div className="flex flex-col justify-center items-center text-white text-xl">
       <h1>Your Result</h1>
-      <p>3 of 6 correct answers</p>
+      <p>{result.correctAnswerResult} of 6</p>
+      <p>
+        Wrong answers:{" "}
+        {result.wrongAnswersResult > 4
+          ? result.wrongAnswersResult + " your idiot!!!"
+          : result.wrongAnswersResult}
+      </p>
     </div>
   );
 };
