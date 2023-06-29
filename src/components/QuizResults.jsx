@@ -5,7 +5,7 @@ const QuizResults = ({ result }) => {
 
   const wrongAnswerText =
     result.wrongAnswersResult > 4
-      ? `${result.wrongAnswersResult} your idiot!!!`
+      ? `${result.wrongAnswersResult} du Keks!!!`
       : result.wrongAnswersResult;
 
   return (
