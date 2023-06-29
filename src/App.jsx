@@ -4,6 +4,10 @@ import { useEffect, useState } from "react";
 
 function App() {
   const [post, setPost] = useState([]);
+  const [result, setResult] = useState({
+    correctAnswerResult: 0,
+    wrongAnswersResult: 0,
+  });
 
   useEffect(() => {
     axios
@@ -17,7 +21,7 @@ function App() {
     <>
       <div className="flex flex-col items-center mb-10">
         <h1 className="text-8xl text-white mb-10">Quiz App</h1>
-        <Questions key={post.id} questions={post} />
+        <Questions questions={post} setResult={setResult} result={result} />
       </div>
     </>
   );
