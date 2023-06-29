@@ -1,18 +1,20 @@
+import { useState } from "react";
+
 const QuizResults = ({ result }) => {
-  function refreshPage() {
+  const refreshPage = () => {
     window.location.reload(false);
-  }
+  };
+
+  const wrongAnswerText =
+    result.wrongAnswersResult > 4
+      ? `${result.wrongAnswersResult} your idiot!!!`
+      : result.wrongAnswersResult;
 
   return (
     <div className="flex flex-col items-center justify-center text-xl text-white">
       <h1 className="font-sans text-4xl font-bold">Your Result</h1>
-      <p className="font-sans text-3xl ">{result.correctAnswerResult} of 6</p>
-      <p className="font-sans text-3xl ">
-        Wrong answers:{" "}
-        {result.wrongAnswersResult > 4
-          ? result.wrongAnswersResult + " your idiot!!! "
-          : result.wrongAnswersResult}
-      </p>
+      <p className="font-sans text-3xl">{result.correctAnswerResult} of 6</p>
+      <p className="font-sans text-3xl">Wrong answers: {wrongAnswerText}</p>
       <button
         className="m-2 mt-8 w-72 rounded-md bg-orange-400 p-4 font-sans font-bold text-white shadow-inner hover:bg-amber-500 hover:text-gray-900"
         onClick={refreshPage}
