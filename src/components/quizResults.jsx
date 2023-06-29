@@ -4,20 +4,20 @@ const QuizResults = ({ result }) => {
   }
 
   return (
-    <div className="flex flex-col justify-center items-center text-white text-xl">
-      <h1>Your Result</h1>
-      <p>{result.correctAnswerResult} of 6</p>
-      <p>
+    <div className="flex flex-col items-center justify-center text-xl text-white">
+      <h1 className="font-sans text-4xl font-bold">Your Result</h1>
+      <p className="font-sans text-3xl ">{result.correctAnswerResult} of 6</p>
+      <p className="font-sans text-3xl ">
         Wrong answers:{" "}
         {result.wrongAnswersResult > 4
-          ? result.wrongAnswersResult + " your idiot!!!"
+          ? result.wrongAnswersResult + " your idiot!!! "
           : result.wrongAnswersResult}
       </p>
       <button
-        className="m-2 mt-8 rounded-md w-72 bg-orange-400 p-4 font-sans font-bold text-white shadow-inner hover:bg-amber-500 hover:text-gray-900"
+        className="m-2 mt-8 w-72 rounded-md bg-orange-400 p-4 font-sans font-bold text-white shadow-inner hover:bg-amber-500 hover:text-gray-900"
         onClick={refreshPage}
       >
-        Start a new quiz!
+        Start a new Quiz!
       </button>
     </div>
   );
