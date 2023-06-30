@@ -28,7 +28,7 @@ const Answers = ({
           onClick={() => onAnswerSelected(answer)}
           value={answer}
           key={index}
-          className="m-2 w-72 rounded-md bg-orange-400 p-4 font-sans font-bold text-white shadow-inner hover:bg-amber-500 hover:text-gray-900"
+          className="m-2 w-48 rounded-md bg-orange-400 p-3 font-sans font-bold text-white shadow-inner hover:bg-amber-500 hover:text-gray-900 sm:w-72 sm:p-4"
         >
           {answer}
         </button>

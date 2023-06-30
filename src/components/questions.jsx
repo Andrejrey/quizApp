@@ -15,13 +15,13 @@ const Questions = ({ questions, setResult, result }) => {
   };
 
   return (
-    <div>
+    <div className="flex min-h-screen flex-col items-center justify-center bg-gray-900">
       {!showResult ? (
         questions.map((question, index) => (
           <div key={question.id}>
             {index === currentQuestionIndex && (
-              <div>
-                <p className="m-5 flex justify-center font-sans text-xl text-white">
+              <div className="flex flex-col items-center">
+                <p className="m-5 text-center font-sans text-lg text-white sm:text-xl">
                   {question.question}
                 </p>
                 <Answers

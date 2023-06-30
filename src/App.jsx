@@ -32,8 +32,8 @@ function App() {
   }, []);
 
   return (
-    <div className="mb-10 flex flex-col items-center">
-      <h1 className="mb-10 text-8xl text-white">Quiz App</h1>
+    <div className="flex min-h-screen flex-col items-center justify-center bg-gray-900">
+      <h1 className="mb-10 text-5xl text-white sm:text-8xl">Quiz App</h1>
       <Questions questions={questions} setResult={setResult} result={result} />
     </div>
   );
