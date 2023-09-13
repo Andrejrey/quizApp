@@ -1,27 +1,54 @@
 import axios from "axios";
 import Questions from "./components/Questions";
-import { useEffect, useState } from "react";
+import QuizResults from "./components/QuizResults";
+import NotFound from "./components/NotFound";
+import Header from "./components/Header";
+import Home from "./components/Home";
+import { Routes, Route } from "react-router-dom";
+import { useState } from "react";
 
 function App() {
   const [questions, setQuestions] = useState([]);
+  const [start, setStart] = useState(true);
   const [result, setResult] = useState({
     correctAnswerResult: 0,
     wrongAnswersResult: 0,
   });
 
-  useEffect(() => {
+  const handleQuestionsApi = () => {
     axios
       .get("https://wd40-trivia.onrender.com/api/questions")
       .then((response) => {
         setQuestions(response.data);
       });
-  }, []);
+    setStart(false);
+  };
 
   return (
-    <div className="mb-10 flex flex-col items-center">
-      <h1 className="mb-10 text-8xl text-white">Quiz App</h1>
-      <Questions questions={questions} setResult={setResult} result={result} />
-    </div>
+    <>
+      <Header />
+      <Routes>
+        <Route path="*" element={<NotFound />} />
+        <Route
+          path="/"
+          element={
+            <Home start={start} handleQuestionsApi={handleQuestionsApi} />
+          }
+        />
+        <Route
+          path="/questions"
+          element={
+            <Questions
+              questions={questions}
+              setResult={setResult}
+              result={result}
+              setStart={setStart}
+              setQuestions={setQuestions}
+            />
+          }
+        />
+      </Routes>
+    </>
   );
 }
 
