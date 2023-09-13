@@ -2,7 +2,13 @@ import { useState } from "react";
 import Answers from "./Answers";
 import QuizResults from "./QuizResults";
 
-const Questions = ({ questions, setResult, result }) => {
+const Questions = ({
+  questions,
+  setResult,
+  result,
+  setQuestions,
+  setStart,
+}) => {
   const [showResult, setShowResult] = useState(false);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
@@ -35,7 +41,12 @@ const Questions = ({ questions, setResult, result }) => {
           </div>
         ))
       ) : (
-        <QuizResults result={result} />
+        <QuizResults
+          result={result}
+          setQuestions={setQuestions}
+          setStart={setStart}
+          setResult={setResult}
+        />
       )}
     </div>
   );
