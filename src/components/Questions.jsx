@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Answers from "./Answers";
+import Loading from "./Loading";
 import QuizResults from "./QuizResults";
 
 const Questions = ({
@@ -22,6 +23,7 @@ const Questions = ({
 
   return (
     <div>
+      {questions.length === 0 && <Loading />}
       {!showResult ? (
         questions.map((question, index) => (
           <div key={question.id}>
