@@ -1,55 +1,60 @@
 import { useState } from "react";
 import Answers from "./Answers";
 import Loading from "./Loading";
-import QuizResults from "./QuizResults";
+import { useNavigate } from "react-router-dom";
 
 const Questions = ({
   questions,
   setResult,
   result,
-  setQuestions,
-  setStart,
+  setQuestionsWithCorrectAnswer,
+  questionsWithCorrectAnswer,
+  setQuestionsWithWrongAnswer,
+  questionsWithWrongAnswer,
 }) => {
-  const [showResult, setShowResult] = useState(false);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const navigate = useNavigate();
 
   const showCurrentQuestion = () => {
-    if (currentQuestionIndex >= questions.length - 1) {
-      setShowResult(true);
-    } else {
+    if (currentQuestionIndex < 5) {
       setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
+    } else {
+      navigate("/result");
     }
   };
 
   return (
     <div>
       {questions.length === 0 && <Loading />}
-      {!showResult ? (
-        questions.map((question, index) => (
-          <div key={question.id}>
-            {index === currentQuestionIndex && (
-              <div>
-                <p className="m-5 flex justify-center font-sans text-xl text-white">
-                  {question.question}
-                </p>
-                <Answers
-                  answers={question.answers}
-                  correctAnswer={question.correctAnswer}
-                  showCurrentQuestion={showCurrentQuestion}
-                  setResult={setResult}
-                />
-              </div>
-            )}
-          </div>
-        ))
-      ) : (
-        <QuizResults
-          result={result}
-          setQuestions={setQuestions}
-          setStart={setStart}
-          setResult={setResult}
-        />
-      )}
+      <div>
+        <div>
+          <p className="m-5 flex justify-center font-sans text-xl text-white">
+            {questions[currentQuestionIndex] &&
+              questions[currentQuestionIndex].question}
+          </p>
+          <Answers
+            answers={
+              questions[currentQuestionIndex] &&
+              questions[currentQuestionIndex].answers
+            }
+            correctAnswer={
+              questions[currentQuestionIndex] &&
+              questions[currentQuestionIndex].correctAnswer
+            }
+            showCurrentQuestion={showCurrentQuestion}
+            setResult={setResult}
+            currentQuestion={
+              questions[currentQuestionIndex] &&
+              questions[currentQuestionIndex].question
+            }
+            result={result}
+            setQuestionsWithCorrectAnswer={setQuestionsWithCorrectAnswer}
+            questionsWithCorrectAnswer={questionsWithCorrectAnswer}
+            setQuestionsWithWrongAnswer={setQuestionsWithWrongAnswer}
+            questionsWithWrongAnswer={questionsWithWrongAnswer}
+          />
+        </div>
+      </div>
     </div>
   );
 };

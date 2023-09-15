@@ -11,9 +11,13 @@ function App() {
   const [questions, setQuestions] = useState([]);
   const [start, setStart] = useState(true);
   const [result, setResult] = useState({
-    correctAnswerResult: 0,
+    correctAnswersResult: 0,
     wrongAnswersResult: 0,
   });
+  const [questionsWithCorrectAnswer, setQuestionsWithCorrectAnswer] = useState(
+    []
+  );
+  const [questionsWithWrongAnswer, setQuestionsWithWrongAnswer] = useState([]);
 
   const handleQuestionsApi = () => {
     axios
@@ -24,6 +28,7 @@ function App() {
     setStart(false);
   };
 
+  console.log(questions);
   return (
     <>
       <Header />
@@ -44,6 +49,25 @@ function App() {
               result={result}
               setStart={setStart}
               setQuestions={setQuestions}
+              setQuestionsWithCorrectAnswer={setQuestionsWithCorrectAnswer}
+              questionsWithCorrectAnswer={questionsWithCorrectAnswer}
+              setQuestionsWithWrongAnswer={setQuestionsWithWrongAnswer}
+              questionsWithWrongAnswer={questionsWithWrongAnswer}
+            />
+          }
+        />
+        <Route
+          path="/result"
+          element={
+            <QuizResults
+              result={result}
+              setQuestions={setQuestions}
+              setStart={setStart}
+              setResult={setResult}
+              questionsWithCorrectAnswer={questionsWithCorrectAnswer}
+              questionsWithWrongAnswer={questionsWithWrongAnswer}
+              setQuestionsWithCorrectAnswer={setQuestionsWithCorrectAnswer}
+              setQuestionsWithWrongAnswer={setQuestionsWithWrongAnswer}
             />
           }
         />
