@@ -29,29 +29,21 @@ const Questions = ({
       <div>
         <div>
           <p className="m-5 flex justify-center font-sans text-xl text-white">
-            {questions[currentQuestionIndex] &&
-              questions[currentQuestionIndex].question}
+            {questions[currentQuestionIndex] && currentQuestionIndex + 1 + "."}{" "}
+            {questions[currentQuestionIndex]?.question}
           </p>
           <Answers
-            answers={
-              questions[currentQuestionIndex] &&
-              questions[currentQuestionIndex].answers
-            }
-            correctAnswer={
-              questions[currentQuestionIndex] &&
-              questions[currentQuestionIndex].correctAnswer
-            }
+            answers={questions[currentQuestionIndex]?.answers}
+            correctAnswer={questions[currentQuestionIndex]?.correctAnswer}
             showCurrentQuestion={showCurrentQuestion}
             setResult={setResult}
-            currentQuestion={
-              questions[currentQuestionIndex] &&
-              questions[currentQuestionIndex].question
-            }
+            currentQuestion={questions[currentQuestionIndex]?.question}
             result={result}
             setQuestionsWithCorrectAnswer={setQuestionsWithCorrectAnswer}
             questionsWithCorrectAnswer={questionsWithCorrectAnswer}
             setQuestionsWithWrongAnswer={setQuestionsWithWrongAnswer}
             questionsWithWrongAnswer={questionsWithWrongAnswer}
+            currentQuestionIndex={currentQuestionIndex}
           />
         </div>
       </div>
