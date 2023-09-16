@@ -28,7 +28,6 @@ function App() {
     setStart(false);
   };
 
-  console.log(questions);
   return (
     <>
       <Header />

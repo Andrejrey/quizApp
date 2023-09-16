@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 const Answers = ({
   answers,
   correctAnswer,
@@ -8,8 +10,18 @@ const Answers = ({
   questionsWithCorrectAnswer,
   setQuestionsWithWrongAnswer,
   questionsWithWrongAnswer,
+  currentQuestionIndex,
 }) => {
+  const [className, setClassName] = useState(
+    "m-2 w-72 rounded-md bg-orange-400 p-4 font-sans font-bold text-white shadow-inner hover:bg-amber-500"
+  );
+  const [selectedAnswer, setSelectedAnswer] = useState(null);
+
+  console.log("selectedAnswer", selectedAnswer);
+  console.log(correctAnswer);
+
   const onAnswerSelected = (answer) => {
+    setSelectedAnswer(answer);
     if (answer === correctAnswer) {
       setResult((prev) => ({
         ...prev,
@@ -20,8 +32,12 @@ const Answers = ({
         {
           question: currentQuestion,
           answer: answer,
+          questionNumber: currentQuestionIndex + 1,
         },
       ]);
+      setClassName(
+        "answer correct m-2 w-72 rounded-md bg-orange-400 p-4 font-sans font-bold text-white shadow-inner hover:bg-amber-500"
+      );
     } else {
       setResult((prev) => ({
         ...prev,
@@ -33,28 +49,34 @@ const Answers = ({
           question: currentQuestion,
           userAnswer: answer,
           correctAnswer: correctAnswer,
+          questionNumber: currentQuestionIndex + 1,
         },
       ]);
+      setClassName(
+        "answer wrong m-2 w-72 rounded-md bg-orange-400 p-4 font-sans font-bold text-white shadow-inner hover:bg-amber-500"
+      );
     }
-    showCurrentQuestion();
+    setTimeout(() => {
+      showCurrentQuestion();
+    }, 3300);
   };
-
-  console.log("correct:", questionsWithCorrectAnswer);
-  console.log("wrong", questionsWithWrongAnswer);
 
   return (
     <div className="flex flex-col items-center justify-center">
-      {answers &&
-        answers.map((answer, index) => (
-          <button
-            onClick={() => onAnswerSelected(answer)}
-            value={answer}
-            key={index}
-            className="m-2 w-72 rounded-md bg-orange-400 p-4 font-sans font-bold text-white shadow-inner hover:bg-amber-500 hover:text-gray-900"
-          >
-            {answer}
-          </button>
-        ))}
+      {answers?.map((answer, index) => (
+        <button
+          onClick={() => onAnswerSelected(answer)}
+          value={answer}
+          key={index}
+          className={
+            selectedAnswer === answer
+              ? className
+              : "m-2 w-72 rounded-md bg-orange-400 p-4 font-sans font-bold text-white shadow-inner hover:bg-amber-500"
+          }
+        >
+          {answer}
+        </button>
+      ))}
     </div>
   );
 };
