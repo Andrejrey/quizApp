@@ -13,7 +13,7 @@ const Answers = ({
   currentQuestionIndex,
 }) => {
   const [className, setClassName] = useState(
-    "m-2 w-72 rounded-md bg-orange-400 p-4 font-sans font-bold text-white shadow-inner hover:bg-amber-500"
+    "m-2 w-72 rounded-md bg-orange-400 p-4 font-sans font-bold text-white shadow-inner sm:hover:bg-amber-500"
   );
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [buttonDisabled, setButtonDisabled] = useState(false);
@@ -74,7 +74,7 @@ const Answers = ({
           className={
             selectedAnswer === answer
               ? className
-              : "m-2 w-72 rounded-md bg-orange-400 p-4 font-sans font-bold text-white shadow-inner hover:bg-amber-500"
+              : "m-2 w-72 rounded-md bg-orange-400 p-4 font-sans font-bold text-white shadow-inner sm:hover:bg-amber-500"
           }
           disabled={buttonDisabled}
         >
