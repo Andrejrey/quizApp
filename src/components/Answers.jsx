@@ -16,11 +16,13 @@ const Answers = ({
     "m-2 w-72 rounded-md bg-orange-400 p-4 font-sans font-bold text-white shadow-inner hover:bg-amber-500"
   );
   const [selectedAnswer, setSelectedAnswer] = useState(null);
+  const [buttonDisabled, setButtonDisabled] = useState(false);
 
   console.log("selectedAnswer", selectedAnswer);
   console.log(correctAnswer);
 
   const onAnswerSelected = (answer) => {
+    setButtonDisabled(true);
     setSelectedAnswer(answer);
     if (answer === correctAnswer) {
       setResult((prev) => ({
@@ -58,6 +60,7 @@ const Answers = ({
     }
     setTimeout(() => {
       showCurrentQuestion();
+      setButtonDisabled(false);
     }, 3300);
   };
 
@@ -73,6 +76,7 @@ const Answers = ({
               ? className
               : "m-2 w-72 rounded-md bg-orange-400 p-4 font-sans font-bold text-white shadow-inner hover:bg-amber-500"
           }
+          disabled={buttonDisabled}
         >
           {answer}
         </button>
