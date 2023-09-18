@@ -35,9 +35,7 @@ const Answers = ({
           questionNumber: currentQuestionIndex + 1,
         },
       ]);
-      setClassName(
-        "answer correct m-2 p-4 w-80 text-white rounded-md transition-all duration-500 bg-gradient-to-r from-cyan-500 to-blue-500 bg-size-200 bg-pos-0"
-      );
+      setClassName("answer correct m-2 p-4 w-80 text-white rounded-md");
     } else {
       setResult((prev) => ({
         ...prev,
@@ -52,9 +50,7 @@ const Answers = ({
           questionNumber: currentQuestionIndex + 1,
         },
       ]);
-      setClassName(
-        "answer wrong m-2 p-4 w-80 text-white rounded-md transition-all duration-500 bg-gradient-to-r from-cyan-500 to-blue-500 bg-size-200 bg-pos-0"
-      );
+      setClassName("answer wrong m-2 p-4 w-80 text-white rounded-md");
     }
     setTimeout(() => {
       showCurrentQuestion();
