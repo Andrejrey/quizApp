@@ -14,7 +14,7 @@ const Answers = ({
   currentQuestionIndex,
 }) => {
   const [className, setClassName] = useState(
-    "m-2 p-4 w-80 text-white rounded-md transition-all duration-500 bg-gradient-to-r from-cyan-500 to-blue-500 bg-size-200 bg-pos-0 hover:bg-pos-100"
+    "m-2 p-4 w-80 text-white rounded-md transition-all duration-500 bg-gradient-to-r from-cyan-500 to-blue-500"
   );
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [buttonDisabled, setButtonDisabled] = useState(false);
