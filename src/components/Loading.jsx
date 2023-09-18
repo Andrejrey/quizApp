@@ -1,7 +1,7 @@
 const Loading = () => {
   return (
     <div className="flex flex-col justify-center items-center bg-LoginBg bg-cover bg-right">
-      <div className="w-[300px] h-[330px] flex flex-col items-center justify-center bg-second rounded-lg">
+      <div className="w-[300px] h-[330px] flex flex-col items-center justify-center rounded-lg">
         <div role="status" className="flex flex-col items-center">
           <div>
             <svg

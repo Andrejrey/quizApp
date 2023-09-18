@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { decode } from "he";
 
 const Answers = ({
   answers,
@@ -13,13 +14,10 @@ const Answers = ({
   currentQuestionIndex,
 }) => {
   const [className, setClassName] = useState(
-    "m-2 w-72 rounded-md bg-orange-400 p-4 font-sans font-bold text-white shadow-inner sm:hover:bg-amber-500"
+    "m-2 w-80 rounded-md bg-orange-400 p-4 font-sans font-bold text-white shadow-inner sm:hover:bg-amber-500"
   );
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [buttonDisabled, setButtonDisabled] = useState(false);
-
-  console.log("selectedAnswer", selectedAnswer);
-  console.log(correctAnswer);
 
   const onAnswerSelected = (answer) => {
     setButtonDisabled(true);
@@ -38,7 +36,7 @@ const Answers = ({
         },
       ]);
       setClassName(
-        "answer correct m-2 w-72 rounded-md bg-orange-400 p-4 font-sans font-bold text-white shadow-inner"
+        "answer correct m-2 w-80 rounded-md bg-orange-400 p-4 font-sans font-bold text-white shadow-inner"
       );
     } else {
       setResult((prev) => ({
@@ -55,7 +53,7 @@ const Answers = ({
         },
       ]);
       setClassName(
-        "answer wrong m-2 w-72 rounded-md bg-orange-400 p-4 font-sans font-bold text-white shadow-inner"
+        "answer wrong m-2 w-80 rounded-md bg-orange-400 p-4 font-sans font-bold text-white shadow-inner"
       );
     }
     setTimeout(() => {
@@ -74,11 +72,11 @@ const Answers = ({
           className={
             selectedAnswer === answer
               ? className
-              : "m-2 w-72 rounded-md bg-orange-400 p-4 font-sans font-bold text-white shadow-inner sm:hover:bg-amber-500"
+              : "m-2 w-80 rounded-md bg-orange-400 p-4 font-sans font-bold text-white shadow-inner sm:hover:bg-amber-500"
           }
           disabled={buttonDisabled}
         >
-          {answer}
+          {decode(answer)}
         </button>
       ))}
     </div>

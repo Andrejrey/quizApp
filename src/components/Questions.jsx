@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Answers from "./Answers";
 import Loading from "./Loading";
+import { decode } from "he";
 import { useNavigate } from "react-router-dom";
 
 const Questions = ({
@@ -28,10 +29,19 @@ const Questions = ({
       {questions.length === 0 && <Loading />}
       <div>
         <div>
-          <p className="w-84 mb-3 m-2 flex justify-center text-center font-sans text-2xl text-white">
-            {questions[currentQuestionIndex] && currentQuestionIndex + 1 + "."}{" "}
-            {questions[currentQuestionIndex]?.question}
-          </p>
+          {questions.length > 0 && (
+            <div className="mb-3 m-5 flex flex-col  p-3 rounded-md justify-center font-sans text-2xl text-white">
+              <p className="mb-3 text-center">
+                Question{" "}
+                {questions[currentQuestionIndex] &&
+                  currentQuestionIndex + 1 + ":"}
+              </p>
+              <p className="text-center mb-2">
+                {" "}
+                {decode(questions[currentQuestionIndex]?.question)}
+              </p>
+            </div>
+          )}
           <Answers
             answers={questions[currentQuestionIndex]?.answers}
             correctAnswer={questions[currentQuestionIndex]?.correctAnswer}
