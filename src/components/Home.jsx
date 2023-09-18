@@ -6,7 +6,7 @@ const Home = ({ start, handleQuestionsApi }) => {
         <Link
           to={"/questions"}
           onClick={handleQuestionsApi}
-          className="flex justify-center m-2 w-72 rounded-md bg-orange-400 p-4 font-sans font-bold text-white shadow-inner hover:bg-amber-500"
+          className="flex justify-center m-2 p-4 w-80 text-white rounded-md transition-all duration-500 bg-gradient-to-r from-cyan-500 to-blue-500 bg-size-200 bg-pos-0 hover:bg-pos-100"
         >
           Start the Quiz
         </Link>
