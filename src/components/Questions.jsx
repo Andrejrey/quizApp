@@ -28,7 +28,7 @@ const Questions = ({
       {questions.length === 0 && <Loading />}
       <div>
         <div>
-          <p className="w-84 mb-3 m-2 flex justify-center text-center font-sans text-xl text-white">
+          <p className="w-84 mb-3 m-2 flex justify-center text-center font-sans text-2xl text-white">
             {questions[currentQuestionIndex] && currentQuestionIndex + 1 + "."}{" "}
             {questions[currentQuestionIndex]?.question}
           </p>
