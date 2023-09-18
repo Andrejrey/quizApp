@@ -14,7 +14,7 @@ const Answers = ({
   currentQuestionIndex,
 }) => {
   const [className, setClassName] = useState(
-    "m-2 w-80 rounded-md bg-orange-400 p-4 font-sans font-bold text-white shadow-inner sm:hover:bg-amber-500"
+    "m-2 p-4 w-80 text-white rounded-md transition-all duration-500 bg-gradient-to-r from-cyan-500 to-blue-500 bg-size-200 bg-pos-0 hover:bg-pos-100"
   );
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [buttonDisabled, setButtonDisabled] = useState(false);
@@ -36,7 +36,7 @@ const Answers = ({
         },
       ]);
       setClassName(
-        "answer correct m-2 w-80 rounded-md bg-orange-400 p-4 font-sans font-bold text-white shadow-inner"
+        "answer correct m-2 p-4 w-80 text-white rounded-md transition-all duration-500 bg-gradient-to-r from-cyan-500 to-blue-500 bg-size-200 bg-pos-0"
       );
     } else {
       setResult((prev) => ({
@@ -53,7 +53,7 @@ const Answers = ({
         },
       ]);
       setClassName(
-        "answer wrong m-2 w-80 rounded-md bg-orange-400 p-4 font-sans font-bold text-white shadow-inner"
+        "answer wrong m-2 p-4 w-80 text-white rounded-md transition-all duration-500 bg-gradient-to-r from-cyan-500 to-blue-500 bg-size-200 bg-pos-0"
       );
     }
     setTimeout(() => {
@@ -72,7 +72,7 @@ const Answers = ({
           className={
             selectedAnswer === answer
               ? className
-              : "m-2 w-80 rounded-md bg-orange-400 p-4 font-sans font-bold text-white shadow-inner sm:hover:bg-amber-500"
+              : "m-2 p-4 w-80 text-white rounded-md transition-all duration-500 bg-gradient-to-r from-cyan-500 to-blue-500 bg-size-200 bg-pos-0 hover:bg-pos-100"
           }
           disabled={buttonDisabled}
         >
