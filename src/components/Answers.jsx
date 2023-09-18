@@ -38,7 +38,7 @@ const Answers = ({
         },
       ]);
       setClassName(
-        "answer correct m-2 w-72 rounded-md bg-orange-400 p-4 font-sans font-bold text-white shadow-inner hover:bg-amber-500"
+        "answer correct m-2 w-72 rounded-md bg-orange-400 p-4 font-sans font-bold text-white shadow-inner"
       );
     } else {
       setResult((prev) => ({
@@ -55,7 +55,7 @@ const Answers = ({
         },
       ]);
       setClassName(
-        "answer wrong m-2 w-72 rounded-md bg-orange-400 p-4 font-sans font-bold text-white shadow-inner hover:bg-amber-500"
+        "answer wrong m-2 w-72 rounded-md bg-orange-400 p-4 font-sans font-bold text-white shadow-inner"
       );
     }
     setTimeout(() => {
