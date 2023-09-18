@@ -2,9 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-.answer.active {
+/* .answer.active {
   background: #f59e0b;
-}
+} */
 
 .answer.correct {
   animation: correct 3s ease forwards;
